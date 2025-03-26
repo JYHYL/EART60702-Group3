@@ -11,10 +11,10 @@
     RF predictions based on Model 85 (RF_85)
 
 2-Stacking:
-    Experiment 1: 
-    All four variables were simultaneously input into the model, and Random Forest was used for training and prediction. The prediction accuracy was evaluated against the ground truth values corresponding to each model.
 
-    Experiment 2: 
+Experiment 1: 
+    All four variables were simultaneously input into the model, and Random Forest was used for training and prediction. The prediction accuracy was evaluated against the ground truth values corresponding to each model.
+Experiment 2: 
     The variables LSTM_day and RF_day were input into the model, and Random Forest was applied for training and prediction. The prediction accuracy was evaluated based on the ground truth values corresponding to each model.
 
 ### Dependencies & Version
