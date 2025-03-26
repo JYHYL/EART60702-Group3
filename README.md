@@ -2,7 +2,9 @@
   The prediction results from LSTM and Random Forest on the six MME models and Model 85 were integrated and used to train a new Random Forest model, which maps the combined predictions to the corresponding ground truth values of each model.
   
 1-Data_preprocessing:
+
     Since both Random Forest and LSTM models utilize a sliding window approach for prediction, the effective lengths of the training and testing predictions are shorter than the original input periods. Therefore, the period from April 1, 2006 to December 31, 2040 is defined as the new training set, and April 1, 2050 to November 30, 2080 as the new testing set. Corresponding data are extracted from the LSTM_prediction and RF_prediction results.
+    
     As Model 85 is based on monthly-scale data, its prediction outputs are linearly interpolated to match the daily resolution. The new datasets are stored in the DataSet directory in Excel format with the following file names: stacking_data_model_train_<model_id> and stacking_data_model_test_<model_id>.
     
     Each dataset includes the following features：
