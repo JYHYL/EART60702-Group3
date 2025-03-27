@@ -10,7 +10,6 @@ This section contains the full pipeline for collecting, cleaning, and merging da
 
 ## Key Preprocessing Steps
 - Extracted Manchester grid cell for each dataset.
-- Resampled MME daily data to monthly averages for comparability with CHESS.
 - Renamed and aligned feature columns across datasets.
 - Unit conversions:
   - TREFMXAV_U: Converted from Kelvin to Celsius.
