@@ -16,16 +16,12 @@ df = pd.read_csv('https://raw.github.com/JYHYL/EART60702-Group3/main/DataSet/ful
 
 
 To run this notebook locally, ensure the following packages are installed:
+
 python: 3.8.18
-
 pandas: 2.0.3
-
 numpy: 1.24.3
-
 matplotlib: 3.7.2
-
 scikit-learn: 1.3.0
-
 tensorflow: 2.10.0
 
 
