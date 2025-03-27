@@ -21,3 +21,11 @@ This section contains the full pipeline for collecting, cleaning, and merging da
 
 ## Output
 - `full_df.csv` — Cleaned and merged dataset used for all modelling tasks.
+
+## Reproducing the Environment
+
+To recreate this environment with Conda:
+
+```bash
+conda env create -f environment.yml
+conda activate climate-modeling-env
