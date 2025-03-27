@@ -39,7 +39,7 @@ All four features (LSTM_day, RF_day, LSTM_85, RF_85) are used as input. A Random
 #### Experiment 2:
 Only the model's own LSTM and RF predictions (LSTM_day, RF_day) are used. A Random Forest model is trained and evaluated accordingly.
 
-Reproducibility
+### Reproducibility
 The dataset is loaded directly from GitHub for consistency
 
 To ensure compatibility and reproducibility, the following environment is used:
