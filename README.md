@@ -1,33 +1,55 @@
+# EART60702-Group3
+## Stacking Model: Integration of LSTM and Random Forest Predictions
 ### Overview
-  The prediction results from LSTM and Random Forest on the six MME models and Model 85 were integrated and used to train a new Random Forest model, which maps the combined predictions to the corresponding ground truth values of each model.
-  
-1-Data_preprocessing:
+    This notebook applies a stacking approach by integrating prediction results from both LSTM and Random Forest models across the six MME ensemble models (003–008) and the CHESS model (085). The combined predictions are used as input features to train a new Random Forest model, mapping them to the corresponding ground truth values.
 
-    Since both Random Forest and LSTM models utilize a sliding window approach for prediction, the effective lengths of the training and testing predictions are shorter than the original input periods. Therefore, the period from April 1, 2006 to December 31, 2040 is defined as the new training set, and April 1, 2050 to November 30, 2080 as the new testing set. Corresponding data are extracted from the LSTM_prediction and RF_prediction results.
-    
-    As Model 85 is based on monthly-scale data, its prediction outputs are linearly interpolated to match the daily resolution. The new datasets are stored in the DataSet directory in Excel format with the following file names: stacking_data_model_train_<model_id> and stacking_data_model_test_<model_id>.
-    
-    Each dataset includes the following features：
-    a. LSTM predictions based on the original model (LSTM_day)
-    b. RF predictions based on the original model (RF_day)
-    c. LSTM predictions based on Model 85 (LSTM_85)
-    d. RF predictions based on Model 85 (RF_85)
+### Data Preprocessing
+    Due to the use of a sliding window strategy in both LSTM and Random Forest models, the resulting prediction sequences are shorter than the full input period. A consistent temporal window is defined for all models:
 
-2-Stacking:
+Training period: April 1, 2006 to December 31, 2040
 
-Experiment 1: 
-    All four variables were simultaneously input into the model, and Random Forest was used for training and prediction. The prediction accuracy was evaluated against the ground truth values corresponding to each model.
-    
-Experiment 2: 
-    The variables LSTM_day and RF_day were input into the model, and Random Forest was applied for training and prediction. The prediction accuracy was evaluated based on the ground truth values corresponding to each model.
+Testing period: April 1, 2050 to November 30, 2080
 
-### Dependencies & Version
-- python = 3.8.18
-- pandas = 2.0.3
-- matplotlib = 3.7.2
-- sklearn = 1.3.0
+#### Key processing steps:
 
- 
+Predictions from LSTM_prediction/ and RF_prediction/ directories are extracted for each model.
+
+As Model 85 (CHESS) operates on a monthly scale, its predictions are linearly interpolated to match the daily resolution of MME models.
+
+#### Final datasets are saved as Excel files in the DataSet/ directory:
+
+stacking_data_model_train_<model_id>.xlsx
+
+stacking_data_model_test_<model_id>.xlsx
+
+#### Each dataset includes the following features:
+
+LSTM_day: LSTM predictions based on the model itself
+
+RF_day: RF predictions based on the model itself
+
+LSTM_85: LSTM predictions from Model 85
+
+RF_85: RF predictions from Model 85
+
+### Stacking Experiments
+#### Experiment 1:
+All four features (LSTM_day, RF_day, LSTM_85, RF_85) are used as input. A Random Forest model is trained and evaluated against each model's true values.
+
+#### Experiment 2:
+Only the model's own LSTM and RF predictions (LSTM_day, RF_day) are used. A Random Forest model is trained and evaluated accordingly.
+
+Reproducibility
+The dataset is loaded directly from GitHub for consistency
+
+To ensure compatibility and reproducibility, the following environment is used:
+
+python: 3.8.18
+pandas: 2.0.3
+matplotlib: 3.7.2
+scikit-learn: 1.3.0
+
+## Notebooks
 1-Data_preprocessing:
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](
 https://colab.research.google.com/github/JYHYL/EART60702-Group3/blob/Stacking/1-data_preprocessing.ipynb)
